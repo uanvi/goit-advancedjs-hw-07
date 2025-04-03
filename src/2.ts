@@ -15,10 +15,9 @@
 */
 
 class Employee {
-  // Заповніть модифікатори доступу
-  name: string;
-  department: string;
-  salary: number;
+  public name: string;
+  private department: string;
+  protected salary: number;
 
   constructor(name: string, department: string, salary: number) {
     this.name = name;
@@ -27,13 +26,16 @@ class Employee {
   }
 
   getEmployeeDetails() {
-    return `Name: ${this.name}, Department: ${this.department}, Salary: ${this.salary}`;
+    return `Name: ${this.name}`;
   }
 }
 
 class Manager extends Employee {
-  // Реалізуйте конструктор та збільшіть salary на 10000
+  private static readonly BONUS: number = 10000;
+  
+  constructor(name: string, department: string, salary: number) {
+    super(name, department, salary);
+    this.salary += Manager.BONUS;
+  }
 }
 
-
-export {};
